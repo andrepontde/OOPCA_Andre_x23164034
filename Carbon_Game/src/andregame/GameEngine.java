@@ -4,32 +4,32 @@
  */
 package andregame;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 /**
  *
  * @author andre
  */
-public class GameEngine {
+public class GameEngine extends GameManager{
     private int currentIndex;
     private int score;
-    private GameManager manager;
-
+    
+    
+    //The pourpose of the game engine class is to simplify the use of all the other classes
+    //as much as possible when implementing it to the GUI, it inherits from GameManager 
+    //to have access to all of the question objects in the array
+    
     public GameEngine() {
         currentIndex = 0;
         score = 0;
-        manager = new GameManager();
     }
-
-
 
     public String startGame() {
         return getNextQuestion();
     }
-
+    
+    
+    //Compute methods
     public String submitAnswer(int answer) {
-        Question currentQuestion = manager.getQuestion(currentIndex);
+        Question currentQuestion = super.getQuestion(currentIndex);
         boolean isCorrect = currentQuestion.computeInfo(answer);
         if (isCorrect) {
             score++;
@@ -39,17 +39,18 @@ public class GameEngine {
     }
 
     public boolean isQuizOver() {
-        return currentIndex >= 10;
-        //Aqui poner mas o menos hardcoded de lka cantidad de preguntas despues
+        return currentIndex >= super.getSize();
     }
-
+    
+    
+    //Getters
     public String getNextQuestion() {
         if (isQuizOver()) {
-            manager.setGrade(score);
-            manager.computeGrade(score);
-            return manager.getMessage();
+            super.setGrade(score);
+            super.computeGrade();
+            return super.getMessage();
         }
-        return manager.getQuestion(currentIndex).getQuestionText();
+        return super.getQuestion(currentIndex).getQuestionText();
     }
 
     public int getScore() {

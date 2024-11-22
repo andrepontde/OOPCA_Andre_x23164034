@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package andregame;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,38 +18,60 @@ public class GameManager {
     private String message;
     private int grade;
     
-    private void populateQuestions() {
-        questions.add(new Question("Que pedo",15, "BUENO", "Malo"));
-         // Add more questions up to 10 as needed
-    }
 
+    //Constructor
     public GameManager() {
         questions = new ArrayList<>();
-        populateQuestions();
-
+        loadQuestions();
+        //The game manager automatically retrieves the questions array
     }
     
+    public void loadQuestions(){
+        FileInputStream fStream;
+        ObjectInputStream oStream;
+        
+
+        //This method opens the QuestionData.dat file, and assigns the value to
+        //an array of objects called question, it allso has exception handling
+        
+        
+        try{
+            fStream = new FileInputStream("QuestionData.dat");
+            oStream = new ObjectInputStream(fStream);
+            
+            questions = (ArrayList<Question>)oStream.readObject();
+            oStream.close();
+            System.out.println("Questions were fetched by the Game manager correctly");
+        }catch(IOException | ClassNotFoundException e){
+            System.out.println("Unable to fetch questions, error:"+ e);
+        }
+    }
     
-    
+    //Setters
     public void setGrade(int score) {
         this.grade = score;
     }
     
-    public void computeGrade(int score) {
-        if (score >= 8) {
-            message = "Excellent! You scored " + score + " out of 10.";
-        } else if (score >= 5) {
-            message = "Good effort! You scored " + score + " out of 10.";
+    
+    //Compute methods
+    public void computeGrade() {
+        if (grade >= 8) {
+            message = "Excellent! You scored " + grade + " out of 10.";
+        } else if (grade >= 5) {
+            message = "Good effort! You scored " + grade + " out of 10.";
         } else {
-            message = "Keep trying! You scored " + score + " out of 10.";
+            message = "Keep trying! You scored " + grade + " out of 10.";
         }
     }
     
-        public String getMessage() {
+    //Getters
+    public String getMessage() {
         return message;
     }
 
-    
+    public int getSize(){
+        return questions.size();
+    }
 
     
     public Question getQuestion(int currentIndex){
