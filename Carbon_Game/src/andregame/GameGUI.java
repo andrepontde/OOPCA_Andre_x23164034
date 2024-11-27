@@ -5,6 +5,7 @@
 package andregame;
 
 import java.awt.Color;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -28,6 +29,8 @@ public class GameGUI extends javax.swing.JFrame {
         showQuestion.setVisible(false);
         submitBTN.setVisible(false);
         messageAreaText.setVisible(false);
+        nameTF.setVisible(false);
+        submitNameBTN.setVisible(false);
         engine = new GameEngine();
         score = engine.getScore();
         
@@ -53,6 +56,8 @@ public class GameGUI extends javax.swing.JFrame {
         instructionsTA = new javax.swing.JScrollPane();
         instructionsTAtext = new javax.swing.JTextArea();
         gameStartBTN = new javax.swing.JButton();
+        nameTF = new javax.swing.JTextField();
+        submitNameBTN = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(611, 377));
@@ -60,7 +65,7 @@ public class GameGUI extends javax.swing.JFrame {
 
         backBTN.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         backBTN.setForeground(new java.awt.Color(255, 51, 51));
-        backBTN.setText("Back");
+        backBTN.setText("Exit");
         backBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backBTNActionPerformed(evt);
@@ -110,6 +115,14 @@ public class GameGUI extends javax.swing.JFrame {
             }
         });
 
+        submitNameBTN.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        submitNameBTN.setText("Submit name");
+        submitNameBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitNameBTNActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -128,10 +141,14 @@ public class GameGUI extends javax.swing.JFrame {
                                 .addGap(57, 57, 57)
                                 .addComponent(instructionsTA, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(173, 173, 173)
+                                .addGap(33, 33, 33)
+                                .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(inputBox, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(submitBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(submitBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(submitNameBTN)))
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
@@ -158,12 +175,14 @@ public class GameGUI extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(inputBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(submitBTN))
+                            .addComponent(submitBTN)
+                            .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(submitNameBTN))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(messageArea, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(scoreLBL)
-                        .addContainerGap(31, Short.MAX_VALUE))
+                        .addContainerGap(43, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(backBTN)
@@ -194,10 +213,15 @@ public class GameGUI extends javax.swing.JFrame {
 
     private void backBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBTNActionPerformed
         // TODO add your handling code here:
-        CleanEnergyGUI mainGUI = new CleanEnergyGUI(); 
-        mainGUI.setVisible(true); 
-        this.setVisible(false); 
-        this.dispose();
+//        CleanEnergyGUI mainGUI = new CleanEnergyGUI(); 
+//        mainGUI.setVisible(true); 
+//        this.setVisible(false); 
+//        this.dispose();
+        System.exit(1);
+        //RETRUN TO BACK BUTTON STATE AFTER REFACTOR
+
+
+//UN-COMMENT PART WHEN REFACTORED TO MAIN PROJECT.
     }//GEN-LAST:event_backBTNActionPerformed
 
     private void submitBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBTNActionPerformed
@@ -224,6 +248,8 @@ public class GameGUI extends javax.swing.JFrame {
                 scoreLBL.setVisible(true);
                 showQuestion.setVisible(true);
                 submitBTN.setVisible(false);
+                nameTF.setVisible(true);
+                submitNameBTN.setVisible(true);
                 scoreLBL.setText("Your final score was: "+ engine.getScore());
                 
                 //Implement highScore stuff here
@@ -236,6 +262,14 @@ public class GameGUI extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_submitBTNActionPerformed
+
+    private void submitNameBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitNameBTNActionPerformed
+        // TODO add your handling code here:
+        String name = nameTF.getText();
+        engine.addUser(name, score);
+        String highScores = engine.getHighScore();
+        JOptionPane.showMessageDialog(null, highScores);
+    }//GEN-LAST:event_submitNameBTNActionPerformed
 
     /**
      * @param args the command line arguments
@@ -283,8 +317,10 @@ public class GameGUI extends javax.swing.JFrame {
     private javax.swing.JTextArea instructionsTAtext;
     private javax.swing.JScrollPane messageArea;
     private javax.swing.JTextArea messageAreaText;
+    private javax.swing.JTextField nameTF;
     private javax.swing.JLabel scoreLBL;
     private javax.swing.JLabel showQuestion;
     private javax.swing.JButton submitBTN;
+    private javax.swing.JButton submitNameBTN;
     // End of variables declaration//GEN-END:variables
 }

@@ -3,9 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package andregame;
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,18 +18,29 @@ import java.util.List;
  */
 public class GameManager {
     private List<Question> questions;
+    private List<User> users;
     private String message;
     private int grade;
+    private File f;
+    private String name;
+    private int score;
+    
     
 
     //Constructor
     public GameManager() {
         questions = new ArrayList<>();
-        loadQuestions();
+        users = new ArrayList<>();
+        loadData();
         //The game manager automatically retrieves the questions array
+        f = new File("UserData.dat");
     }
     
-    public void loadQuestions(){
+    public void highScores(){
+        
+    }
+    
+    public void loadData(){
         FileInputStream fStream;
         ObjectInputStream oStream;
         
@@ -45,6 +59,76 @@ public class GameManager {
         }catch(IOException | ClassNotFoundException e){
             System.out.println("Unable to fetch questions, error:"+ e);
         }
+        
+        
+        
+        try{
+            fStream = new FileInputStream("UserData.dat");
+            oStream = new ObjectInputStream(fStream);
+            
+            users = (ArrayList<User>)oStream.readObject();
+            oStream.close();
+            System.out.println("User data fetched correctly");
+        }catch(IOException | ClassNotFoundException e){
+            System.out.println("No user data available");
+        }
+    }
+    
+    public void addUser(String name, int score){
+        this.name = name;
+        this.score = score;
+
+        User tempUser = new User(name, score);
+        
+        
+        users.add(tempUser);
+        
+        try{
+            FileOutputStream fStream;
+            ObjectOutputStream oStream;
+            
+            fStream = new FileOutputStream(f);
+            oStream = new ObjectOutputStream(fStream);
+            oStream.writeObject(users);
+            oStream.close();
+            System.out.println("User added succesfully!\n");
+            
+            //Added some exception handling 
+        }catch(IOException e){
+            System.out.println("User was not saved");
+        }
+    }
+    
+    public String getHighScore(){
+        User tempUser;
+        int highestScore = -1;
+        String highScores = "The hihgest scores are: \n";
+        List<User> tempUserList = new ArrayList<>();
+
+        if (users.size() > 1){
+            for (int i = 0; i < users.size(); i++){
+                tempUser = users.get(i);
+                if (tempUser.getScore() > highestScore){
+                    tempUserList.add(0, tempUser);
+                    highestScore = tempUser.getScore();
+                }else{
+                    tempUserList.add(tempUser);
+                }
+            }
+            for (int i = 0; i< tempUserList.size(); i++){
+                User innerTempUser = tempUserList.get(i);
+                highScores = highScores + " Place: "+(i+1)+ "Name: "+ innerTempUser.getName()+ "Score: " + innerTempUser.getScore()+"\n";
+            }
+
+        }else{
+            tempUser = users.get(0);
+            highScores = "The only high score is: "+ "Name: "+ tempUser.getName()+ "Score: " + tempUser.getScore()+"\n";
+        }
+        
+        
+        
+        return highScores;
+        
     }
     
     //Setters
