@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -36,9 +37,6 @@ public class GameManager {
         f = new File("UserData.dat");
     }
     
-    public void highScores(){
-        
-    }
     
     public void loadData(){
         FileInputStream fStream;
@@ -54,13 +52,15 @@ public class GameManager {
             oStream = new ObjectInputStream(fStream);
             
             questions = (ArrayList<Question>)oStream.readObject();
+            //Randomize objects.
+            Collections.shuffle(questions);
             oStream.close();
             System.out.println("Questions were fetched by the Game manager correctly");
         }catch(IOException | ClassNotFoundException e){
             System.out.println("Unable to fetch questions, error:"+ e);
         }
         
-        
+        //Here it uses the UserData File to load the previous user data if it exists.
         
         try{
             fStream = new FileInputStream("UserData.dat");
@@ -74,6 +74,9 @@ public class GameManager {
         }
     }
     
+    
+    //The AddUser function adds the user to a users lists and then appends the whole list to the UserData file to store it, this only 
+    //happens when a game session is finished
     public void addUser(String name, int score){
         this.name = name;
         this.score = score;
@@ -99,36 +102,43 @@ public class GameManager {
         }
     }
     
+
+    //The getHighScore function stores the data in order of score to a new list to later display it on a JOptionPane panel 
     public String getHighScore(){
         User tempUser;
-        int highestScore = -1;
-        String highScores = "The hihgest scores are: \n";
+        String highScores = "The highest scores are: \n";
         List<User> tempUserList = new ArrayList<>();
-
+        
+        //If the user list has more than 1 user, order them by the greatest score to a temporary user list.
         if (users.size() > 1){
-            for (int i = 0; i < users.size(); i++){
-                tempUser = users.get(i);
-                if (tempUser.getScore() > highestScore){
-                    tempUserList.add(0, tempUser);
-                    highestScore = tempUser.getScore();
-                }else{
-                    tempUserList.add(tempUser);
+            for (User user : users) {
+                boolean inserted = false;
+
+                for (int i = 0; i < tempUserList.size(); i++) {
+                    if (user.getScore() > tempUserList.get(i).getScore()) {
+                        tempUserList.add(i, user);
+                        inserted = true;
+                        break;
+                    }
                 }
-            }
+                if (!inserted) {
+                    tempUserList.add(user);
+                }
+            }         
+            
+            //After the list has been ordered, append it to a string to diplay it on the JOptionPane panel
             for (int i = 0; i< tempUserList.size(); i++){
                 User innerTempUser = tempUserList.get(i);
-                highScores = highScores + " Place: "+(i+1)+ "Name: "+ innerTempUser.getName()+ "Score: " + innerTempUser.getScore()+"\n";
+                highScores = highScores + " Place: "+(i+1)+ " Name: "+ innerTempUser.getName()+ " Score: " + innerTempUser.getScore()+"\n";
             }
 
         }else{
             tempUser = users.get(0);
-            highScores = "The only high score is: "+ "Name: "+ tempUser.getName()+ "Score: " + tempUser.getScore()+"\n";
+            highScores = "The only high score is: "+ " Name: "+ tempUser.getName()+ " Score: " + tempUser.getScore()+"\n";
         }
-        
-        
-        
         return highScores;
         
+       
     }
     
     //Setters

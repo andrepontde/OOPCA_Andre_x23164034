@@ -31,6 +31,8 @@ public class GameGUI extends javax.swing.JFrame {
         messageAreaText.setVisible(false);
         nameTF.setVisible(false);
         submitNameBTN.setVisible(false);
+        nextBTN.setVisible(false);
+        
         engine = new GameEngine();
         score = engine.getScore();
         
@@ -58,12 +60,16 @@ public class GameGUI extends javax.swing.JFrame {
         gameStartBTN = new javax.swing.JButton();
         nameTF = new javax.swing.JTextField();
         submitNameBTN = new javax.swing.JButton();
+        currentScoreLBL = new javax.swing.JLabel();
+        nextBTN = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(611, 377));
+        setMinimumSize(new java.awt.Dimension(691, 360));
+        setPreferredSize(new java.awt.Dimension(691, 360));
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        backBTN.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        backBTN.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         backBTN.setForeground(new java.awt.Color(255, 51, 51));
         backBTN.setText("Exit");
         backBTN.addActionListener(new java.awt.event.ActionListener() {
@@ -71,39 +77,50 @@ public class GameGUI extends javax.swing.JFrame {
                 backBTNActionPerformed(evt);
             }
         });
+        getContentPane().add(backBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 290, 90, 40));
 
         showQuestion.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         showQuestion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         showQuestion.setText("Question example: What is the carbon footprint of the average adult? per year?");
+        getContentPane().add(showQuestion, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 680, -1));
 
-        inputBox.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        inputBox.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         inputBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputBoxActionPerformed(evt);
             }
         });
+        getContentPane().add(inputBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 182, 46));
 
-        submitBTN.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        submitBTN.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         submitBTN.setText("Submit");
         submitBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitBTNActionPerformed(evt);
             }
         });
+        getContentPane().add(submitBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 100, 154, 48));
 
-        scoreLBL.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        scoreLBL.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
+        scoreLBL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         scoreLBL.setText("Your score was 10/10 congrats!");
+        getContentPane().add(scoreLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 130, 680, -1));
 
         messageAreaText.setColumns(20);
-        messageAreaText.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        messageAreaText.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        messageAreaText.setLineWrap(true);
         messageAreaText.setRows(5);
         messageArea.setViewportView(messageAreaText);
 
+        getContentPane().add(messageArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 680, 119));
+
         instructionsTAtext.setColumns(20);
-        instructionsTAtext.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        instructionsTAtext.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         instructionsTAtext.setRows(5);
-        instructionsTAtext.setText("These are the instructions: \nFirst, read the question carefully.\nSecond, try to guess a value, the range is between 100 and 1000 kg. \nclick the submit button and see the results!\n");
+        instructionsTAtext.setText("Instructions: \nFirst, read the question carefully.\nSecond, try to guess a value, the range is between 0 and 100 kg. \nThird, click the submit button and see the results!\n");
         instructionsTA.setViewportView(instructionsTAtext);
+
+        getContentPane().add(instructionsTA, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 680, 110));
 
         gameStartBTN.setBackground(new java.awt.Color(255, 51, 51));
         gameStartBTN.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
@@ -114,80 +131,32 @@ public class GameGUI extends javax.swing.JFrame {
                 gameStartBTNActionPerformed(evt);
             }
         });
+        getContentPane().add(gameStartBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 185, 47));
 
-        submitNameBTN.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        nameTF.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        getContentPane().add(nameTF, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 170, 40));
+
+        submitNameBTN.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
         submitNameBTN.setText("Submit name");
         submitNameBTN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitNameBTNActionPerformed(evt);
             }
         });
+        getContentPane().add(submitNameBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 160, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 30, Short.MAX_VALUE)
-                        .addComponent(showQuestion, javax.swing.GroupLayout.PREFERRED_SIZE, 583, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(227, 227, 227)
-                                .addComponent(gameStartBTN))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(57, 57, 57)
-                                .addComponent(instructionsTA, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(inputBox, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(submitBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(submitNameBTN)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(messageArea)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(209, 209, 209)
-                .addComponent(scoreLBL)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(backBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(instructionsTA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(showQuestion)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(gameStartBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(inputBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(submitBTN)
-                            .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(submitNameBTN))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(messageArea, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(scoreLBL)
-                        .addContainerGap(43, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(backBTN)
-                        .addContainerGap())))
-        );
+        currentScoreLBL.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
+        currentScoreLBL.setText("Score: 0");
+        getContentPane().add(currentScoreLBL, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, -1, -1));
+
+        nextBTN.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        nextBTN.setText("Next ");
+        nextBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextBTNActionPerformed(evt);
+            }
+        });
+        getContentPane().add(nextBTN, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 100, 160, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -237,24 +206,19 @@ public class GameGUI extends javax.swing.JFrame {
                 
                 messageArea.setBackground(Color.green);
                 score++;
+                currentScoreLBL.setText("Score: "+ score);
             }else{
                 messageArea.setBackground(Color.red);
             }
             messageAreaText.setText(feedBack);
+            nextBTN.setVisible(true);
+            inputBox.setVisible(false);
+            submitBTN.setVisible(false);
             
-            //To do whenever the game has been finished
-            if(engine.isQuizOver()){
-                inputBox.setVisible(false);
-                scoreLBL.setVisible(true);
-                showQuestion.setVisible(true);
-                submitBTN.setVisible(false);
-                nameTF.setVisible(true);
-                submitNameBTN.setVisible(true);
-                scoreLBL.setText("Your final score was: "+ engine.getScore());
+
                 
-                //Implement highScore stuff here
-            }
-            showQuestion.setText(engine.getNextQuestion());
+            
+            
             
         } catch (NumberFormatException ex) {
             messageAreaText.setText("Invalid input! Please enter an integer.");
@@ -269,7 +233,33 @@ public class GameGUI extends javax.swing.JFrame {
         engine.addUser(name, score);
         String highScores = engine.getHighScore();
         JOptionPane.showMessageDialog(null, highScores);
+        System.exit(1);
+
     }//GEN-LAST:event_submitNameBTNActionPerformed
+
+    private void nextBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBTNActionPerformed
+        // TODO add your handling code here:
+        showQuestion.setText(engine.getNextQuestion());
+        messageAreaText.setText("");
+        nextBTN.setVisible(false);
+                    //To do whenever the game has been finished
+        if(engine.isQuizOver()){
+            inputBox.setVisible(false);
+            scoreLBL.setVisible(true);
+            showQuestion.setVisible(true);
+            submitBTN.setVisible(false);
+            nameTF.setVisible(true);
+            submitNameBTN.setVisible(true);
+            messageArea.setVisible(false);
+            currentScoreLBL.setVisible(false);
+            scoreLBL.setText("Your final score was: "+ engine.getScore());
+            backBTN.setVisible(false);
+        }else{
+            inputBox.setVisible(true);
+            submitBTN.setVisible(true);
+        }
+       
+    }//GEN-LAST:event_nextBTNActionPerformed
 
     /**
      * @param args the command line arguments
@@ -311,6 +301,7 @@ public class GameGUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBTN;
+    private javax.swing.JLabel currentScoreLBL;
     private javax.swing.JButton gameStartBTN;
     private javax.swing.JTextField inputBox;
     private javax.swing.JScrollPane instructionsTA;
@@ -318,6 +309,7 @@ public class GameGUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane messageArea;
     private javax.swing.JTextArea messageAreaText;
     private javax.swing.JTextField nameTF;
+    private javax.swing.JButton nextBTN;
     private javax.swing.JLabel scoreLBL;
     private javax.swing.JLabel showQuestion;
     private javax.swing.JButton submitBTN;

@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  *
@@ -20,9 +21,12 @@ public class GamePopulation {
     private ArrayList <Question> qlist;
     private File f;
     
-    //This class is used to create a file that contains the array with the Question object
+    //This class is used to create a file that contains the array with the Question objects
     //It is then loaded in the game manager so each question is able to be manipulated individually
     //It uses the Singleton design to avoid erros when writting in the file multiple times
+    
+    //This class is a Developer tool, it could be used just to add, delete or modify questions, but the QuestionsData.dat 
+    //file would be enough to run the rest of the code. 
     
     
     //Constructors
@@ -44,95 +48,66 @@ public class GamePopulation {
         FileOutputStream fStream;
         ObjectOutputStream oStream;
         qlist.add(new Question(
-            "How many kilograms of CO2 are emitted to produce 1 kilogram of beef?", 
-            270, 
-            "Correct! Producing beef emits around 270 kg of CO2 due to methane emissions and land use.", 
-            "Wrong! Producing beef has a large carbon footprint because of methane and high resource usage."
+            "How many kilograms of CO2 are emitted to produce 1 kilogram of chicken?", 
+            6, 
+            "Correct! Producing 1 kg of chicken emits around 6 kg of CO2 due to feed production and farming.", 
+            "Wrong! Producing 1 kg of chicken emits about 6 kg of CO2."
         ));
         qlist.add(new Question(
-            "How many kilograms of CO2 are emitted by driving a gasoline car for 1,000 miles?", 
-            240, 
-            "Correct! On average, driving 1,000 miles emits around 240 kg of CO2.", 
-            "Wrong! Gasoline cars emit significant CO2 due to fossil fuel combustion."
+            "How many kilograms of CO2 are emitted to produce 1 kilogram of cheese?", 
+            13, 
+            "Correct! Producing 1 kg of cheese emits about 13 kg of CO2 due to dairy farming and processing.", 
+            "Wrong! Producing 1 kg of cheese emits around 13 kg of CO2."
         ));
         qlist.add(new Question(
-            "How many kilograms of CO2 does an average flight emit per passenger for 1,000 miles?", 
-            250, 
-            "Correct! Flights emit approximately 250 kg of CO2 per passenger for 1,000 miles.", 
-            "Wrong! Air travel has one of the highest carbon footprints per mile."
+            "How many kilograms of CO2 are emitted by driving an electric car for 100 miles?", 
+            15, 
+            "Correct! Driving an electric car for 100 miles emits about 15 kg of CO2, depending on the energy source.", 
+            "Wrong! Driving an electric car for 100 miles emits around 15 kg of CO2."
         ));
         qlist.add(new Question(
-            "How many kilograms of CO2 does heating a home with gas for one month emit?", 
-            200, 
-            "Correct! Heating a home with gas for a month emits around 200 kg of CO2.", 
-            "Wrong! Gas heating contributes significantly to household CO2 emissions."
+            "How many kilograms of CO2 are emitted by producing 1 kilogram of chocolate?", 
+            18, 
+            "Correct! Producing 1 kg of chocolate emits around 18 kg of CO2 due to intensive farming and processing.", 
+            "Wrong! Producing 1 kg of chocolate emits about 18 kg of CO2."
         ));
         qlist.add(new Question(
-            "How many kilograms of CO2 are emitted by using a washing machine for a year?", 
-            175, 
-            "Correct! Running a washing machine for a year emits about 175 kg of CO2.", 
-            "Wrong! Washing machines consume energy, contributing to CO2 emissions."
+            "How many kilograms of CO2 are emitted by using a laptop for 8 hours?", 
+            3, 
+            "Correct! Using a laptop for 8 hours emits around 3 kg of CO2, depending on power usage.", 
+            "Wrong! Using a laptop for 8 hours emits approximately 3 kg of CO2."
         ));
         qlist.add(new Question(
-            "How many kilograms of CO2 does producing 1 kilogram of cheese emit?", 
-            130, 
-            "Correct! Producing cheese emits about 130 kg of CO2 due to dairy farming.", 
-            "Wrong! Cheese has a significant carbon footprint, though lower than beef."
+            "How many kilograms of CO2 are emitted by producing 1 liter of bottled water?", 
+            2, 
+            "Correct! Producing 1 liter of bottled water emits about 2 kg of CO2 due to plastic manufacturing.", 
+            "Wrong! Producing 1 liter of bottled water emits around 2 kg of CO2."
         ));
         qlist.add(new Question(
-            "How many kilograms of CO2 are emitted by eating 1 kilogram of chocolate?", 
-            190, 
-            "Correct! Chocolate production emits about 190 kg of CO2, mostly from cocoa farming.", 
-            "Wrong! Chocolate production has a high footprint due to processing and resource use."
+            "How many kilograms of CO2 are emitted to produce 1 kilogram of apples?", 
+            1, 
+            "Correct! Producing 1 kg of apples emits around 1 kg of CO2 due to transportation and farming.", 
+            "Wrong! Producing 1 kg of apples emits about 1 kg of CO2."
         ));
         qlist.add(new Question(
-            "How many kilograms of CO2 are emitted by heating a swimming pool for a year?", 
-            800, 
-            "Correct! Heating a swimming pool for a year emits around 800 kg of CO2.", 
-            "Wrong! Pool heating consumes significant energy, increasing CO2 emissions."
+            "How many kilograms of CO2 are emitted by taking a hot shower for 10 minutes?", 
+            5, 
+            "Correct! Taking a 10-minute hot shower emits around 5 kg of CO2 due to water heating.", 
+            "Wrong! Taking a 10-minute hot shower emits approximately 5 kg of CO2."
         ));
         qlist.add(new Question(
-            "How many kilograms of CO2 are emitted to manufacture a car?", 
-            900, 
-            "Correct! Manufacturing a car emits about 900 kg of CO2, primarily due to material extraction and assembly.", 
-            "Wrong! Car manufacturing has a high carbon footprint due to resource use and energy demands."
+            "How many kilograms of CO2 are emitted by baking bread in the oven for 1 hour?", 
+            4, 
+            "Correct! Baking bread for 1 hour emits around 4 kg of CO2 due to energy consumption.", 
+            "Wrong! Baking bread for 1 hour emits about 4 kg of CO2."
         ));
         qlist.add(new Question(
-            "How many kilograms of CO2 are saved by recycling 1 ton of aluminum?", 
-            1000, 
-            "Correct! Recycling 1 ton of aluminum saves about 1,000 kg of CO2 emissions.", 
-            "Wrong! Recycling aluminum reduces emissions significantly by saving energy in production."
+            "How many kilograms of CO2 are emitted by producing 1 pair of jeans?", 
+            33, 
+            "Correct! Producing 1 pair of jeans emits around 33 kg of CO2 due to cotton farming and manufacturing.", 
+            "Wrong! Producing 1 pair of jeans emits about 33 kg of CO2."
         ));
-        qlist.add(new Question(
-            "How many kilograms of CO2 are emitted to produce a kilogram of rice?", 
-            400, 
-            "Correct! Rice production emits around 400 kg of CO2 per kilogram, primarily from methane.", 
-            "Wrong! Rice paddies produce methane, contributing to greenhouse gas emissions."
-        ));
-        qlist.add(new Question(
-            "How many kilograms of CO2 are emitted by using an air conditioner for one summer?", 
-            500, 
-            "Correct! Using an air conditioner for one summer emits about 500 kg of CO2.", 
-            "Wrong! Air conditioning consumes large amounts of electricity, increasing CO2 emissions."
-        ));
-        qlist.add(new Question(
-            "How many kilograms of CO2 are emitted by taking 10 showers with hot water?", 
-            100, 
-            "Correct! Taking 10 hot showers emits around 100 kg of CO2, depending on energy sources.", 
-            "Wrong! Heating water for showers contributes significantly to emissions."
-        ));
-        qlist.add(new Question(
-            "How many kilograms of CO2 are emitted to produce 1 liter of milk?", 
-            120, 
-            "Correct! Producing milk emits around 120 kg of CO2 due to dairy farming.", 
-            "Wrong! Milk production contributes to emissions, though lower than meat."
-        ));
-        qlist.add(new Question(
-            "How many kilograms of CO2 are emitted by producing 1 kilogram of bread?", 
-            150, 
-            "Correct! Producing bread emits about 150 kg of CO2, primarily from farming and baking.", 
-            "Wrong! Bread production involves emissions from farming and energy use in baking."
-        ));
+
         
         try{
             fStream = new FileOutputStream(f);
