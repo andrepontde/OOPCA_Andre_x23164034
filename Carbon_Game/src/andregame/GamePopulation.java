@@ -107,6 +107,67 @@ public class GamePopulation {
             "Correct! Producing 1 pair of jeans emits around 33 kg of CO2 due to cotton farming and manufacturing.", 
             "Wrong! Producing 1 pair of jeans emits about 33 kg of CO2."
         ));
+        qlist.add(new Question(
+            "How many kilograms of CO2 are emitted to produce 1 kilogram of rice?", 
+            4, 
+            "Correct! Producing 1 kg of rice emits around 4 kg of CO2 due to methane emissions from flooded fields.", 
+            "Wrong! Producing 1 kg of rice emits about 4 kg of CO2."
+        ));
+        qlist.add(new Question(
+            "How many kilograms of CO2 are emitted to produce 1 kilogram of potatoes?", 
+            2, 
+            "Correct! Producing 1 kg of potatoes emits around 2 kg of CO2 due to low energy and resource use.", 
+            "Wrong! Producing 1 kg of potatoes emits about 2 kg of CO2."
+        ));
+        qlist.add(new Question(
+            "How many kilograms of CO2 are emitted by using an LED light bulb for 10 hours?", 
+            1, 
+            "Correct! Using an LED light bulb for 10 hours emits about 1 kg of CO2, making it energy-efficient.", 
+            "Wrong! Using an LED light bulb for 10 hours emits around 1 kg of CO2."
+        ));
+        qlist.add(new Question(
+            "How many kilograms of CO2 are emitted to produce 1 kilogram of bread?", 
+            6, 
+            "Correct! Producing 1 kg of bread emits around 6 kg of CO2 due to farming and baking processes.", 
+            "Wrong! Producing 1 kg of bread emits about 6 kg of CO2."
+        ));
+        qlist.add(new Question(
+            "How many kilograms of CO2 are emitted by producing 1 kilogram of tofu?", 
+            3, 
+            "Correct! Producing 1 kg of tofu emits around 3 kg of CO2 due to soybean farming.", 
+            "Wrong! Producing 1 kg of tofu emits about 3 kg of CO2."
+        ));
+        qlist.add(new Question(
+            "How many kilograms of CO2 are emitted by watching TV for 5 hours?", 
+            2, 
+            "Correct! Watching TV for 5 hours emits about 2 kg of CO2, depending on the TV's energy consumption.", 
+            "Wrong! Watching TV for 5 hours emits around 2 kg of CO2."
+        ));
+        qlist.add(new Question(
+            "How many kilograms of CO2 are emitted to produce 1 liter of milk?", 
+            10, 
+            "Correct! Producing 1 liter of milk emits around 10 kg of CO2 due to dairy farming.", 
+            "Wrong! Producing 1 liter of milk emits about 10 kg of CO2."
+        ));
+        qlist.add(new Question(
+            "How many kilograms of CO2 are emitted by sending 1,000 emails?", 
+            1, 
+            "Correct! Sending 1,000 emails emits around 1 kg of CO2 due to server energy consumption.", 
+            "Wrong! Sending 1,000 emails emits about 1 kg of CO2."
+        ));
+        qlist.add(new Question(
+            "How many kilograms of CO2 are emitted by producing 1 kilogram of pasta?", 
+            5, 
+            "Correct! Producing 1 kg of pasta emits around 5 kg of CO2 due to wheat farming and processing.", 
+            "Wrong! Producing 1 kg of pasta emits about 5 kg of CO2."
+        ));
+        qlist.add(new Question(
+            "How many kilograms of CO2 are emitted by producing 1 smartphone?", 
+            70, 
+            "Correct! Producing 1 smartphone emits around 70 kg of CO2 due to mining and manufacturing.", 
+            "Wrong! Producing 1 smartphone emits about 70 kg of CO2."
+        ));
+
 
         
         try{

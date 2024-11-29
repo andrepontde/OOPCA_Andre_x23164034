@@ -203,7 +203,6 @@ public class GameGUI extends javax.swing.JFrame {
             int value = Integer.parseInt(input);
             String feedBack = engine.submitAnswer(value);
             if(score != engine.getScore()){
-                
                 messageArea.setBackground(Color.green);
                 score++;
                 currentScoreLBL.setText("Score: "+ score);
@@ -214,11 +213,6 @@ public class GameGUI extends javax.swing.JFrame {
             nextBTN.setVisible(true);
             inputBox.setVisible(false);
             submitBTN.setVisible(false);
-            
-
-                
-            
-            
             
         } catch (NumberFormatException ex) {
             messageAreaText.setText("Invalid input! Please enter an integer.");
@@ -233,6 +227,7 @@ public class GameGUI extends javax.swing.JFrame {
         engine.addUser(name, score);
         String highScores = engine.getHighScore();
         JOptionPane.showMessageDialog(null, highScores);
+        JOptionPane.showMessageDialog(null, "Shocking, isn’t it? The carbon footprint of everyday actions adds up fast. \nBut here's the good news—you have the power to make a difference. \nEvery small change counts. Choose wisely, act responsibly, and together, \nwe can create a more sustainable future.");
         System.exit(1);
 
     }//GEN-LAST:event_submitNameBTNActionPerformed
@@ -242,7 +237,7 @@ public class GameGUI extends javax.swing.JFrame {
         showQuestion.setText(engine.getNextQuestion());
         messageAreaText.setText("");
         nextBTN.setVisible(false);
-                    //To do whenever the game has been finished
+        //To do whenever the game has been finished
         if(engine.isQuizOver()){
             inputBox.setVisible(false);
             scoreLBL.setVisible(true);

@@ -30,7 +30,7 @@ public class Question implements Serializable{
     
     //Compute
     public boolean computeInfo(int answer) {
-        return (answer < correctAnswer+5 && answer > correctAnswer-5);
+        return (answer < correctAnswer+3 && answer > correctAnswer-3);
         //Set a small range where the user can be wrong to make the game a little easier
     }
     

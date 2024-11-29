@@ -37,9 +37,10 @@ public class GameEngine extends GameManager{
         currentIndex++;
         return currentQuestion.getFeedback(isCorrect);
     }
-
+    
+    //While there are 20 questions, it will only show 10 and these will always be random to make the game more dinamic.
     public boolean isQuizOver() {
-        return currentIndex >= super.getSize();
+        return currentIndex >= 10;
     }
     
     

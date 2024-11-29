@@ -52,7 +52,8 @@ public class GameManager {
             oStream = new ObjectInputStream(fStream);
             
             questions = (ArrayList<Question>)oStream.readObject();
-            //Randomize objects.
+            
+            //Randomize question objects.
             Collections.shuffle(questions);
             oStream.close();
             System.out.println("Questions were fetched by the Game manager correctly");
