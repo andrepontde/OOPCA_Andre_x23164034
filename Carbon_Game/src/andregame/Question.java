@@ -14,14 +14,14 @@ import java.io.Serializable;
 
 public class Question implements Serializable{
     protected String questionText;
-    protected int correctAnswer;
+    protected boolean correctAnswer;
     protected String correctMessage;
     protected String incorrectMessage;
     
     //The question object is used to store the data of all the "Levels" on the game
     
     //Constructor
-    public Question(String questionText, int correctAnswer, String correctMessage, String incorrectMessage) {
+    public Question(String questionText, boolean correctAnswer, String correctMessage, String incorrectMessage) {
         this.questionText = questionText;//This is the question itself
         this.correctAnswer = correctAnswer;//This is the correct int of the question
         this.correctMessage = correctMessage;//This message is returned if the question was correct
@@ -29,9 +29,8 @@ public class Question implements Serializable{
     }
     
     //Compute
-    public boolean computeInfo(int answer) {
-        return (answer < correctAnswer+3 && answer > correctAnswer-3);
-        //Set a small range where the user can be wrong to make the game a little easier
+    public boolean computeInfo(boolean answer) {
+        return answer == correctAnswer;
     }
     
     //Geters

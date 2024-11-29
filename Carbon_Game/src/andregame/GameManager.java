@@ -17,6 +17,10 @@ import java.util.List;
  *
  * @author andre
  */
+
+
+
+    //Game manager is in charge of managing the data of the game, like question objects, while the engine uses that data to run the game.
 public class GameManager {
     private List<Question> questions;
     private List<User> users;
@@ -25,7 +29,7 @@ public class GameManager {
     private File f;
     private String name;
     private int score;
-    
+    private int qnumber;
     
 
     //Constructor
@@ -35,6 +39,7 @@ public class GameManager {
         loadData();
         //The game manager automatically retrieves the questions array
         f = new File("UserData.dat");
+        qnumber = 0;
     }
     
     
@@ -143,19 +148,20 @@ public class GameManager {
     }
     
     //Setters
-    public void setGrade(int score) {
+    public void setGrade(int score, int qnumber) {
         this.grade = score;
+        this.qnumber = qnumber;
     }
     
     
     //Compute methods
     public void computeGrade() {
         if (grade >= 8) {
-            message = "Excellent! You scored " + grade + " out of 10.";
+            message = "Excellent! You scored " + grade + " out of " + qnumber+".";
         } else if (grade >= 5) {
-            message = "Good effort! You scored " + grade + " out of 10.";
+            message = "Good effort! You scored " + grade + " out of " + qnumber+".";
         } else {
-            message = "Keep trying! You scored " + grade + " out of 10.";
+            message = "Keep trying! You scored " + grade + " out of " + qnumber+".";
         }
     }
     
