@@ -49,7 +49,7 @@ public class GameEngine extends GameManager{
         return currentQuestion.getFeedback(isCorrect);
     }
     
-    //Finish the game if the user ran out of gealth or if it is the last level.
+    //Finish the game if the user ran out of health or if it is the last level.
     public boolean isQuizOver() {
         if(health <= 0){
             return true;

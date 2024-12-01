@@ -171,6 +171,7 @@ public class GameGUI extends javax.swing.JFrame {
 
         question.setBackground(new java.awt.Color(255, 255, 255));
 
+        showQuestion.setEditable(false);
         showQuestion.setColumns(20);
         showQuestion.setFont(new java.awt.Font("Century Gothic", 0, 14)); // NOI18N
         showQuestion.setLineWrap(true);
